@@ -10,6 +10,8 @@
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+
     </head>
 
     <body id="{% block body_id %}{% endblock %}">
@@ -115,9 +117,8 @@
         {% block javascripts %}
         {% endblock %}
 
-        {# it's not mandatory to set the timezone in localizeddate(). This is done to
-           avoid errors when the 'intl' PHP extension is not available and the application
-           is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
-        <!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
+        <script src="{{ asset('bootstrap/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/popper.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     </body>
 </html>
