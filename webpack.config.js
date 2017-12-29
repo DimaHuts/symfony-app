@@ -12,13 +12,11 @@ Encore
     })
     .enableSassLoader()
     .enableVersioning(false)
-    .createSharedEntry('js/common', ['jquery'])
-    .addEntry('js/app', './assets/js/app.js')
-    .addEntry('js/login', './assets/js/login.js')
-    .addEntry('js/admin', './assets/js/admin.js')
-    .addEntry('js/search', './assets/js/search.js')
-    .addStyleEntry('css/app', ['./assets/scss/app.scss'])
+    .addStyleEntry('css/app', ['./assets/scss/app.sass'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
+    .addStyleEntry('css/menu', ['./assets/scss/menu.sass'])
+    .addStyleEntry('css/footer', ['./assets/scss/footer.sass'])
+    .addStyleEntry('css/forms', ['./assets/scss/forms.sass'])
 ;
 
 module.exports = Encore.getWebpackConfig();
