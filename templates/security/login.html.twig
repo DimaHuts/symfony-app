@@ -1,38 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'form.html.twig' %}
 
-{% block main %}
+{% block form_header_content %}
+    {{ 'title.login'|trans }}
+{% endblock %}
 
-    <div class="col-lg-4">
-
-        <p class="form-header">
-            {{ 'title.login'|trans }}
-        </p>
-
+{% block form %}
+    
+    <form action="{{ path('security_login') }}" method="post" class="form">
+        
         {% if error %}
             <div class="alert alert-danger">
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
 
+        <div class="form-group">
+            <input type="text" placeholder="{{ 'title.username'|trans }}" name="username" class="form-control" />
+        </div>
 
-        <form action="{{ path('security_login') }}" method="post" class="form">
+        <div class="form-group">
+            <input type="password" placeholder="{{ 'title.password'|trans }}" name="_password" class="form-control" />
+        </div>
 
-            <div class="form-group">
-                <input type="text" placeholder="{{ 'label.username'|trans }}" name="username" class="form-control" />
-            </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
 
-            <div class="form-group">
-                <input type="password" placeholder="{{ 'label.password'|trans }}" name="_password" class="form-control" />
-            </div>
+        <button type="submit" class="">
+            {{ 'title.login'|trans }}
+        </button>
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-
-            <button type="submit" class="btn btn-primary">
-                {{ 'title.login'|trans }}
-            </button>
-
-        </form>
-
-    </div>
-
+    </form>
+            
 {% endblock %}
+

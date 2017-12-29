@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('build/css/menu.css') }}">
         <link rel="stylesheet" href="{{ asset('build/css/footer.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/forms.css') }}">
+
     </head>
 
     <body>
@@ -21,20 +21,14 @@
 
         <div class="container body-container">
             <div class="row">
-                {% block body %}
-                    <div class="row">
+                
+                {{ include('default/_flash_messages.html.twig') }}
 
-                        <div id="main" class="block-center">
-                            {{ include('default/_flash_messages.html.twig') }}
-
-                            {% block main %}{% endblock %}
-                        </div>
-
-                        <div id="sidebar" class="col-sm-3">
-
-                        </div>
-                    </div>
-                {% endblock %}
+                <div class="block-center">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+                
             </div>
 
         </div>
