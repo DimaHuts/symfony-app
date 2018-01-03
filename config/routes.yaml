@@ -4,7 +4,7 @@
 # See https://symfony.com/doc/current/cookbook/templating/render_without_controller.html
 homepage:
     path: /{_locale}
-    controller: App\Controller\ProductController::index
+    controller: App\Controller\ProductController::listAction
     requirements:
         _locale: '%app_locales%'
     defaults:

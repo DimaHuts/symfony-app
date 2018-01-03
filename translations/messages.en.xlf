@@ -152,13 +152,116 @@
                 <source>menu.logout</source>
                 <target>Logout</target>
             </trans-unit>
-            <trans-unit id="menu.rss">
-                <source>menu.rss</source>
-                <target>Blog Posts RSS</target>
+
+
+
+            <trans-unit id="product.import">
+                <source>product.import</source>
+                <target>Import from csv</target>
             </trans-unit>
-            <trans-unit id="menu.search">
-                <source>menu.search</source>
-                <target>Search</target>
+            <trans-unit id="product_modified">
+                <source>product.modified</source>
+                <target>Product was modified</target>
+            </trans-unit>
+            <trans-unit id="product">
+                <source>product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="product_saved">
+                <source>product.saved</source>
+                <target>Product was saved</target>
+            </trans-unit>
+            <trans-unit id="product_deleted">
+                <source>product.deleted</source>
+                <target>Product was deleted</target>
+            </trans-unit>
+            <trans-unit id="entity_does_not_exist">
+                <source>entity.does.not.exist</source>
+                <target>That entity does not exist</target>
+            </trans-unit>
+            <trans-unit id="exception_save_db">
+                <source>exception.save.db</source>
+                <target>The data was not saved in db</target>
+            </trans-unit>
+            <trans-unit id="table_product_name">
+                <source>table.product.name</source>
+                <target>NAME</target>
+            </trans-unit>
+            <trans-unit id="table_product_author">
+                    <source>table.product.author</source>
+                    <target>Author</target>
+            </trans-unit>
+            <trans-unit id="table_product_price">
+                <source>table.product.price</source>
+                <target>PRICE</target>
+            </trans-unit>
+            <trans-unit id="table_product_description">
+                <source>table.product.description</source>
+                <target>DESCRIPTION</target>
+            </trans-unit>
+            <trans-unit id="table_product_save">
+                <source>table.product.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="product_actions_edit">
+                    <source>product.actions.edit</source>
+                    <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="table_product_actions">
+                <source>table.product.actions</source>
+                <target>ACTIONS</target>
+            </trans-unit>
+            <trans-unit id="product_no_products">
+                <source>product.no-products</source>
+                <target>There are no products</target>
+            </trans-unit>
+            <trans-unit id="product_image">
+                <source>product.image</source>
+                <target>Product image</target>
+            </trans-unit>
+            <trans-unit id="table_product_image">
+                <source>table.product.image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="home_link">
+                <source>home.link</source>
+                <target>HOME</target>
+            </trans-unit>
+            <trans-unit id="sign_up">
+                <source>sign.up</source>
+                <target>Sign Up</target>
+            </trans-unit>
+            <trans-unit id="login">
+                <source>login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="logout">
+                <source>logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="user_image">
+                <source>user.image</source>
+                <target>User image</target>
+            </trans-unit>
+            <trans-unit id="password_forgot">
+                <source>password.forgot</source>
+                <target>Forgot password?</target>
+            </trans-unit>
+            <trans-unit id="account_need">
+                <source>account.need</source>
+                <target>Do you need account?</target>
+            </trans-unit>
+            <trans-unit id="profile">
+                <source>profile</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="access_denied_exception">
+                <source>access.denied.exception</source>
+                <target>This user does not have access to this section</target>
+            </trans-unit>
+            <trans-unit id="my_products">
+                <source>my.products</source>
+                <target>My products</target>
             </trans-unit>
         </body>
     </file>
