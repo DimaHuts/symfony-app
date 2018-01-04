@@ -1,0 +1,5 @@
+<form class="table-products__delete-form" action="{{ path('delete-product', {'_locale': app.request.getLocale(), 'id': product.getId()}) }}" method="post">
+    <button type="submit">
+        <span class="glyphicon glyphicon-remove text-danger"></span>
+    </button>
+</form>

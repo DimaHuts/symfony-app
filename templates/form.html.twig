@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/forms.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% block content %}
+
+        <div class="col-lg-4">
+            <p class="form-header">
+                {% block form_header_content %}{% endblock %}
+            </p>
+
+            {% block form %}
+            {% endblock %}
+        </div>
+
+    {% endblock %}
+
+{% endblock %}

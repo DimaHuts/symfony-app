@@ -1,0 +1,22 @@
+<div class="pagination-block text-center">
+    {% if maxPages > 1 %}
+        <ul class="pagination pagination-sm">
+            {#`«` arrow#}
+            <li {{ thisPage == 1 ?  'class="disabled"' }} >
+                <a class="pagination-arrow" data-arrow="left" href="{{ path('homepage', {page: thisPage-1 < 1 ? 1 : thisPage-1, '_locale': app.request.getLocale(), filter: filter}) }}">«</a>
+            </li>
+
+            {#Render each page number#}
+            {% for i in 1..maxPages %}
+                <li {{ thisPage == i ? 'class="active"' }}>
+                    <a class="pagination-number" data-page={{ i }} href="{{ path('homepage', {page: i, '_locale': app.request.getLocale(), filter: filter}) }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {#`»` arrow#}
+            <li {{ thisPage == maxPages ? 'class="disabled"' }} >
+                <a class="pagination-arrow" data-arrow="right" href="{{ path('homepage', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, '_locale': app.request.getLocale(), filter: filter}) }}">»</a>
+            </li>
+        </ul>
+    {% endif %}
+</div>
