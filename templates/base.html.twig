@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Symfony Demo application{% endblock %}</title>
+        <title>{% block title %}Symfony application{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -22,7 +22,7 @@
         <div class="container body-container">
             <div class="row">
                 
-                {{ include('default/_flash_messages.html.twig') }}
+                {{ include('common/messages.html.twig') }}
 
                 <div class="block-center">
                     {% block body %}
