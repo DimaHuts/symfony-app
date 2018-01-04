@@ -13,16 +13,7 @@
 
     <div class="container">
 
-        <div class="import-csv pull-right">
-            {{ form_start(csvForm, {'method': 'post', 'action': path('import-products')}) }}
-            <label>
-                <p>{{ 'product.import'|trans }}</p>
-                {{ form_widget(csvForm.csvFile) }}
-            </label>
-            <div class="text-info">
-            </div>
-            {{ form_end(csvForm) }}
-        </div>
+        {% include 'product/import-products.html.twig' %}
 
         {% include 'product/products-table.html.twig' %}
 

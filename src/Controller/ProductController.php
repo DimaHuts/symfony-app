@@ -137,7 +137,7 @@ class ProductController extends AbstractController
             return $this->render('product/add.html.twig', ['form' => $form->createView()]);
         }
 
-        $this->dbService->saveData($product, Events::PRODUCT_MODIFIED, $this->getUser());
+        $this->dbService->saveData([$product], Events::PRODUCT_MODIFIED, $this->getUser());
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }

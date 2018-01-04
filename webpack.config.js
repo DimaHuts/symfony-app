@@ -19,7 +19,6 @@ Encore
     .addStyleEntry('css/exceptions', './assets/scss/exceptions.sass')
     .addStyleEntry('css/import-csv', './assets/scss/import-csv.sass')
     .addStyleEntry('css/app', ['./assets/scss/app.sass'])
-    .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/menu', ['./assets/scss/menu.sass'])
     .addStyleEntry('css/footer', ['./assets/scss/footer.sass'])
     .addStyleEntry('css/forms', ['./assets/scss/forms.sass'])

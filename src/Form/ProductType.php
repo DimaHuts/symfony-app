@@ -37,27 +37,23 @@ class ProductType extends AbstractType
            ->add('name', TextType::class, [
                   'required' => true,
                   'attr' => [
-                      'class' => 'form-control',
-                      'placeholder' => $this->translator->trans('table.product.name', [])
+                      'placeholder' => 'table.product.name'
                   ]
                  ])
            ->add('price', NumberType::class, [
                   'required' => true,
                   'attr' => [
-                      'class' => 'form-control',
-                      'placeholder' => $this->translator->trans('table.product.price')
+                      'placeholder' => 'table.product.price'
                   ]
                  ])
            ->add('description', TextareaType::class, [
                   'required' => true,
-                  'label' => $this->translator->trans('table.product.description'),
                   'attr' => [
-                      'class' => 'form-control',
-                      'placeholder' => $this->translator->trans('table.product.description')
+                      'placeholder' => 'table.product.description'
                   ]
                  ])
-            ->add('uploadedFiles', FileType::class, [
-                  'label' => $this->translator->trans('product.image'),
+           ->add('uploadedFiles', FileType::class, [
+                  'label' => 'product.image',
                   'required' => false,
                   'multiple' => true
                  ])
@@ -67,10 +63,6 @@ class ProductType extends AbstractType
                   'multiple'     => true,
                   'label' => false,
                   'required' => false,
-                  'attr' => [
-                      'class' => 'form-control'
-                ]
-
                ]);
     }
 
