@@ -12,13 +12,15 @@
     "jquery": "^3.2.1",
     "lato-font": "^3.0.0",
     "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
     "sass-loader": "^6.0.5",
-    "typeahead.js": "^0.11.1"
+    "typeahead.js": "^0.11.1",
+    "uglifyjs-webpack-plugin": "^1.1.5"
   },
   "scripts": {
     "dev-server": "./node_modules/.bin/encore dev-server",
     "dev": "./node_modules/.bin/encore dev",
-    "watch": "./node_modules/.bin/encore dev --watch",
+    "watch": "encore dev --watch",
     "build": "./node_modules/.bin/encore production"
   }
 }

@@ -167,7 +167,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("import-products", name="import-products")
+     * @Route("/import-products", name="import-products")
      * @Method("POST")
      *
      * This method obtains products from .csv and add to a bd

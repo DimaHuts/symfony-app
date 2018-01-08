@@ -159,6 +159,10 @@
                 <source>product.import</source>
                 <target>Import from csv</target>
             </trans-unit>
+            <trans-unit id="product.my">
+                <source>product.my</source>
+                <target>My products</target>
+            </trans-unit>
             <trans-unit id="product_modified">
                 <source>product.modified</source>
                 <target>Product was modified</target>

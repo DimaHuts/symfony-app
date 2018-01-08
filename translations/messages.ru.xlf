@@ -142,6 +142,10 @@
                 <source>product.import</source>
                 <target>Импорт из csv</target>
             </trans-unit>
+            <trans-unit id="product.my">
+                <source>product.my</source>
+                <target>Мои товары</target>
+            </trans-unit>
             <trans-unit id="product_modified">
                 <source>product.modified</source>
                 <target>Товар был изменен</target>

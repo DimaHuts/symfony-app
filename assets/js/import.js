@@ -4,9 +4,9 @@
 
     form.change(function(e){
         e.preventDefault();
-
+        
         $.ajax({
-            url: '/import-products/' + $("html").attr('lang'),
+            url: 'import-products',
             type: 'POST',
             data: new FormData(form[0]),
             processData: false,
