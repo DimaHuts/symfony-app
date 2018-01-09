@@ -10,9 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use App\Events;
 
 class RegistrationController extends Controller
 {
+
+    private $eventDispatcher;
+
+    /**
+     * RegistrationController constructor.
+     * @param $eventDispatcher
+     */
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
     /**
      * @Route("register", name="register")
      * @Method({"GET", "POST"})
@@ -31,6 +45,8 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            
+            $this->eventDispatcher->dispatch(Events::USER_REGISTERED);
 
             return $this->redirectToRoute("security_login");
         }

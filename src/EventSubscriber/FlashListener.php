@@ -23,6 +23,7 @@ class FlashListener implements EventSubscriberInterface
         Events::PRODUCT_MODIFIED => 'product.modified',
         Events::ENTITY_DOES_NOT_EXIST => 'entity.does.not.exist',
         Events::PRODUCT_DELETED => 'product.deleted',
+        Events::USER_REGISTERED => 'user.registered',
     ];
 
     /**
@@ -48,6 +49,7 @@ class FlashListener implements EventSubscriberInterface
             Events::PRODUCT_MODIFIED => 'addSuccessMessage',
             Events::ENTITY_DOES_NOT_EXIST => 'addDangerMessage',
             Events::PRODUCT_DELETED => 'addSuccessMessage',
+            Events::USER_REGISTERED => 'addSuccessMessage'
         ];
     }
 

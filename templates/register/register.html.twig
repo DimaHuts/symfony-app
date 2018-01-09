@@ -14,15 +14,34 @@
         
         <div class="form-group">
             {{ form_widget(form.username) }}
+            
+            <div class="text-danger">
+                {{ form_errors(form.username) }}
+            </div>
         </div>
+        
         <div class="form-group">
             {{ form_widget(form.email) }}
+            
+            <div class="text-danger">
+            	{{ form_errors(form.email) }}
+            </div>
         </div>
+        
         <div class="form-group">
             {{ form_widget(form.plainPassword.first) }}
+            
+            <div class="text-danger">
+            	{{ form_errors(form.plainPassword.first) }}
+            </div>
         </div>
+        
         <div class="form-group">
             {{ form_widget(form.plainPassword.second) }}
+            
+            <div class="text-danger">
+            	{{ form_errors(form.plainPassword.second) }}
+            </div>
         </div>
         
         <button type="submit">

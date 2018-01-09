@@ -231,6 +231,15 @@
                 <source>home.link</source>
                 <target>HOME</target>
             </trans-unit>
+            <trans-unit id="access_denied_exception">
+                <source>access.denied.exception</source>
+                <target>This user does not have access to this section</target>
+            </trans-unit>
+            <trans-unit id="my_products">
+                <source>my.products</source>
+                <target>My products</target>
+            </trans-unit>
+            
             <trans-unit id="sign_up">
                 <source>sign.up</source>
                 <target>Sign Up</target>
@@ -259,13 +268,9 @@
                 <source>profile</source>
                 <target>Profile</target>
             </trans-unit>
-            <trans-unit id="access_denied_exception">
-                <source>access.denied.exception</source>
-                <target>This user does not have access to this section</target>
-            </trans-unit>
-            <trans-unit id="my_products">
-                <source>my.products</source>
-                <target>My products</target>
+            <trans-unit id="user.registered">
+                <source>user.registered</source>
+                <target>User has been registered successfully. The confirmation was sent to your email</target>
             </trans-unit>
         </body>
     </file>

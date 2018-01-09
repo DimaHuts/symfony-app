@@ -214,6 +214,15 @@
                 <source>home.link</source>
                 <target>ГЛАВНАЯ</target>
             </trans-unit>
+            <trans-unit id="access_denied_exception">
+                <source>access.denied.exception</source>
+                <target>Данный пользователь не имеет доступа к этому разделу</target>
+            </trans-unit>
+            <trans-unit id="my_products">
+                <source>my.products</source>
+                <target>Мои товары</target>
+            </trans-unit>
+            
             <trans-unit id="sign_up">
                 <source>sign.up</source>
                 <target>Регистрация</target>
@@ -242,13 +251,9 @@
                 <source>profile</source>
                 <target>Профиль</target>
             </trans-unit>
-            <trans-unit id="access_denied_exception">
-                <source>access.denied.exception</source>
-                <target>Данный пользователь не имеет доступа к этому разделу</target>
-            </trans-unit>
-            <trans-unit id="my_products">
-                <source>my.products</source>
-                <target>Мои товары</target>
+            <trans-unit id="user.registered">
+                <source>user.registered</source>
+                <target>Пользователь успешно зарегестрирован. Писомо с подтверждением было отправлено вам на почту</target>
             </trans-unit>
         </body>
     </file>
