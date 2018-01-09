@@ -255,6 +255,8 @@
                 <source>user.registered</source>
                 <target>Пользователь успешно зарегестрирован. Писомо с подтверждением было отправлено вам на почту</target>
             </trans-unit>
+            
+            
         </body>
     </file>
 </xliff>

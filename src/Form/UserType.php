@@ -33,6 +33,7 @@ class UserType extends AbstractType
                 ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'invalid_message' => 'validators.password.equal',
                 'first_options'  => [
                     'label' => false,
                     'attr' => [

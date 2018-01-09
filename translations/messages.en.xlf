@@ -272,6 +272,8 @@
                 <source>user.registered</source>
                 <target>User has been registered successfully. The confirmation was sent to your email</target>
             </trans-unit>
+            
+            
         </body>
     </file>
 </xliff>
