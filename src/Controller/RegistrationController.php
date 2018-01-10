@@ -31,7 +31,8 @@ class RegistrationController extends Controller
      * @Route("register", name="register")
      * @Method({"GET", "POST"})
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registration(Request $request, UserPasswordEncoderInterface $passwordEncoder,
+                                 \Swift_Mailer $mailer)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -45,6 +46,19 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $message = (new \Swift_Message('Confirm your registration'))
+                ->setFrom('dmitry.huts@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'emails/registration.html.twig'
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($message);
             
             $this->eventDispatcher->dispatch(Events::USER_REGISTERED);
 
