@@ -1,6 +1,8 @@
 swiftmailer:
     transport: smtp
-    host: 127.0.0.1
-    username: 'Dmitry Huts'
-    password: null
+    encryption: ssl
+    host: smtp.gmail.com
+    port:      465
+    username: dmitry.huts@gmail.com
+    password: $(Trifonova35)
     spool: { type: memory }
