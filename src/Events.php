@@ -11,4 +11,5 @@ final class Events
     const SAVE_DB_ERROR = 'exception.save.db';
     const ENTITY_DOES_NOT_EXIST = 'entity.does.not.exist';
     const USER_REGISTERED = 'user.registered';
+    const EMAIL_CONFIRMED = 'email.confirmed';
 }

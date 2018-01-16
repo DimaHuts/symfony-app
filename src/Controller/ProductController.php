@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
+use App\Events\ProductEvent;
 
 /**
  * Class ProductController
@@ -104,7 +105,8 @@ class ProductController extends AbstractController
             return $this->render('product/add.html.twig', ['form' => $form->createView()]);
         }
 
-        $this->dbService->saveData([$product], Events::PRODUCT_ADD, $this->getUser());
+        $this->eventDispatcher->dispatch(Events::PRODUCT_ADD, new ProductEvent($this->getUser(), $product));
+        $this->dbService->saveData([$product]);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }
@@ -137,7 +139,8 @@ class ProductController extends AbstractController
             return $this->render('product/add.html.twig', ['form' => $form->createView()]);
         }
 
-        $this->dbService->saveData([$product], Events::PRODUCT_MODIFIED, $this->getUser());
+        $this->eventDispatcher->dispatch(Events::PRODUCT_MODIFIED, new ProductEvent($this->getUser(), $product));
+        $this->dbService->saveData([$product]);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }
@@ -206,7 +209,7 @@ class ProductController extends AbstractController
 
                         fclose($handle);
 
-                        $this->dbService->saveData($listProducts, Events::PRODUCT_ADD, $this->getUser());
+                        $this->dbService->saveData($listProducts);
                         $message = $this->translator->trans('product.saved');
                     }
                 }

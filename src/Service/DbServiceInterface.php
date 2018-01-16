@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\User;
 use Doctrine\ORM\Query;
 
 /**
@@ -14,12 +13,8 @@ interface DbServiceInterface {
 
     /**
      * This method saves data into database
-     *
-     * @param $entity
-     * @param string $successEventName
-     * @param User $currentUser
      */
-    function saveData($entity, string $successEventName, User $currentUser): void;
+    function saveData($entity): void;
 
     /**
      * This method deletes data from database

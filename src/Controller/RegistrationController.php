@@ -12,27 +12,30 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use App\Events;
+use App\Events\UserEvent;
+use App\Service\DbService;
 
 class RegistrationController extends Controller
 {
 
     private $eventDispatcher;
+    private $dbService;
 
     /**
      * RegistrationController constructor.
      * @param $eventDispatcher
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(EventDispatcherInterface $eventDispatcher, DbService $dbService)
     {
         $this->eventDispatcher = $eventDispatcher;
+        $this->dbService = $dbService;
     }
 
     /**
      * @Route("register", name="register")
      * @Method({"GET", "POST"})
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-                                 \Swift_Mailer $mailer)
+    public function registration(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -43,25 +46,12 @@ class RegistrationController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
+            $this->eventDispatcher->dispatch(Events::USER_REGISTERED, new UserEvent($user));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
-            $message = (new \Swift_Message('Confirm your registration'))
-                ->setFrom('dmitry.huts@gmail.com')
-                ->setTo($user->getEmail())
-                ->setBody(
-                    $this->renderView(
-                        'emails/registration.html.twig'
-                    ),
-                    'text/html'
-                )
-            ;
-
-            $mailer->send($message);
-            
-            $this->eventDispatcher->dispatch(Events::USER_REGISTERED);
-
+           
             return $this->redirectToRoute("security_login");
         }
 
@@ -69,6 +59,25 @@ class RegistrationController extends Controller
             'register/register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+    
+    /**
+     * @Route("confirm/{token}", name="registration-confirm")
+     */
+    public function registrationConfirm(Request $request)
+    {
+        $user = $this->dbService->findOneByCriteria(User::class, ["token" => $request->get("token")]);
+        
+        if ($user instanceof User)
+        {
+            $user->setIsActive(true);
+            $user->setToken(null);
+            $this->dbService->saveData([$user]);
+            
+            $this->eventDispatcher->dispatch(Events::EMAIL_CONFIRMED);
+            
+            return $this->redirectToRoute("security_login");
+        }
     }
 
 }

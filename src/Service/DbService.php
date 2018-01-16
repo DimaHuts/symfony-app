@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\User;
 use App\Events;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -34,20 +33,18 @@ class DbService implements DbServiceInterface
      * @see DbServiceInterface::saveData()
      * @inheritdoc
      */
-    function saveData($entities, string $successEventName, User $currentUser): void
+    function saveData($entities): void
     {
         try
         {
             for ($i = 0; $i < count($entities); $i++) {
 
                 $entity = $entities[$i];
-                $entity->setUser($currentUser);
-
+                
                 $this->em->persist($entity);
                 $this->em->flush();
             }
-
-            $this->eventDispatcher->dispatch($successEventName);
+            
         }
         catch (Exception $exception)
         {

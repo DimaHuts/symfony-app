@@ -255,7 +255,10 @@
                 <source>user.registered</source>
                 <target>Пользователь успешно зарегестрирован. Писомо с подтверждением было отправлено вам на почту</target>
             </trans-unit>
-            
+            <trans-unit id="email.confirmed">
+                <source>email.confirmed</source>
+                <target>Вы успешно подтвердили свой почтовый адрес. Сейчас вы можете войти на сайт</target>
+            </trans-unit>
             
         </body>
     </file>

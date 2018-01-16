@@ -6,9 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class SecurityController extends AbstractController
 {
+    
+    private $eventDispatcher;
+    
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+    
     /**
      * @Route("/login", name="security_login")
      */

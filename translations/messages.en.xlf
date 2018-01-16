@@ -272,7 +272,10 @@
                 <source>user.registered</source>
                 <target>User has been registered successfully. The confirmation was sent to your email</target>
             </trans-unit>
-            
+            <trans-unit id="email.confirmed">
+                <source>email.confirmed</source>
+                <target>You confirmed your email successfully. Now you can eneter to the site</target>
+            </trans-unit>
             
         </body>
     </file>
