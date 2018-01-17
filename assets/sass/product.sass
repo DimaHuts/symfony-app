@@ -1,0 +1,46 @@
+@import "mixins"
+@import "common-variables"
+
+.table-products
+  margin-top: 50px
+
+  thead
+    color: $text-color-blue
+
+    & > tr
+      background: $background-color
+
+  .align-middle
+    vertical-align: middle !important
+
+  .table-products__carousel-cell
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+    .product-image
+      +product-image()
+
+    .carousel
+      display: flex
+      flex-direction: row
+      justify-content: center
+      width: $product-image-width
+
+      .carousel-control
+        width: auto
+
+        span
+          color: $background-color
+
+  .table-products__td-actions
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+  .table-products__delete-form
+    display: inline
+
+    button[type='submit']
+      background-color: transparent
+      border: none
