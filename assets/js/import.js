@@ -6,22 +6,16 @@
         e.preventDefault();
         
         $.ajax({
-            url: 'import-products',
+            url: 'http://127.0.0.1:8000/en/import-products',
             type: 'POST',
             data: new FormData(form[0]),
             processData: false,
             contentType: false,
             cache: false,
             success: function(data) {
-                console.log(JSON.parse(data))
-                // form.find(".text-danger").html(JSON.parse(data)[0]['csvFile'][0])
-                form.find(".text-info").html(JSON.parse(data));
-                // if (!data) {
-                //
-                //     form.after(JSON.parse(data));
-                // }
-
-                form.find("input[type='file']").val("");
+                // form.find(".text-info").html(JSON.parse(data));
+                // form.find("input[type='file']").val("");
+                location.reload()
             }
         })
     });

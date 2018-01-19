@@ -170,7 +170,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/import-products", name="import-products")
+     * @Route("import-products", name="import-products")
      * @Method("POST")
      *
      * This method obtains products from .csv and add to a bd
@@ -179,7 +179,7 @@ class ProductController extends AbstractController
      */
     public function importFromCSVAction(Request $request)
     {
-        $message = "";
+//        $message = "";
 
         if ($request->isXmlHttpRequest())
         {
@@ -210,39 +210,39 @@ class ProductController extends AbstractController
                         fclose($handle);
 
                         $this->dbService->saveData($listProducts);
-                        $message = $this->translator->trans('product.saved');
+//                        $message = $this->translator->trans('product.saved');
                     }
                 }
-                else
-                {
-                    $message = $this->getFormErrors($form)["csvFile"][0];
-                }
+//                else
+//                {
+//                    $message = $this->getFormErrors($form)["csvFile"][0];
+//                }
             }
         }
 
-        return new Response($this->serializer->serialize($message, 'json'));
+        return new Response($this->serializer->serialize('success','json'));
     }
 
-    protected function getFormErrors(Form $form)
-    {
-        $errors = array();
-
-        // Global
-        foreach ($form->getErrors() as $error) {
-            $errors[$form->getName()][] = $error->getMessage();
-        }
-
-        // Fields
-        foreach ($form as $child) {
-            if (!$child->isValid()) {
-                foreach ($child->getErrors() as $error) {
-                    $errors[$child->getName()][] = $error->getMessage();
-                }
-            }
-        }
-
-        return $errors;
-    }
+//    protected function getFormErrors(Form $form)
+//    {
+//        $errors = array();
+//
+//        // Global
+//        foreach ($form->getErrors() as $error) {
+//            $errors[$form->getName()][] = $error->getMessage();
+//        }
+//
+//        // Fields
+//        foreach ($form as $child) {
+//            if (!$child->isValid()) {
+//                foreach ($child->getErrors() as $error) {
+//                    $errors[$child->getName()][] = $error->getMessage();
+//                }
+//            }
+//        }
+//
+//        return $errors;
+//    }
 
 
 
