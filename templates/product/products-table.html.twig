@@ -28,7 +28,7 @@
                     {% if product.files is empty %}
                         <img class="product-image" src="{{ asset('img/undefined.jpg') }}" >
                     {% else %}
-                        {% include 'product/product-images-carousel.html.twig' %}
+                        {% include 'product/product-images-carousel.html.twig' with {'index': product.getId()} %}
                     {% endif %}
                 </td>
                 <td class="align-middle text-center">{{ product.user.username }}</td>

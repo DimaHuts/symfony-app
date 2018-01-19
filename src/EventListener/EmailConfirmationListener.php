@@ -28,7 +28,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
         ];
     }
 
-    public function onRegistrationSuccess(UserEvent $event)
+    public function onRegistrationSuccess(UserEvent $event, $eventName)
     {
         $user = $event->getUser();
         

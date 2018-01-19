@@ -55,13 +55,13 @@ class FlashListener implements EventSubscriberInterface
         ];
     }
 
-    public function addSuccessMessage($eventName)
+    public function addSuccessMessage(Event $event, $eventName)
     {
         $this->flashBag
             ->add('success', $this->translator->trans(self::$messages[$eventName], [], 'messages'));
     }
 
-    public function addDangerMessage($eventName)
+    public function addDangerMessage(Event $event, $eventName)
     {
         $this->flashBag
             ->add('danger', $this->translator->trans(self::$messages[$eventName], [], 'messages'));
