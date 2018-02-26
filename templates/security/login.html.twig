@@ -32,6 +32,12 @@
             {{ 'title.login'|trans }}
         </button>
 
+        <div class="form-group">
+            <a href="{{ path('forgot-password_request') }}">
+                {{ 'password.forgot'| trans }}
+            </a>
+        </div>
+
     </form>
             
 {% endblock %}

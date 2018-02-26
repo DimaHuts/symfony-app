@@ -1,0 +1,29 @@
+{% extends 'form.html.twig' %}
+
+{% block title %}
+    Forgot Password
+{% endblock %}
+
+{% block form_header_content %}
+    {{ 'password.forgot'|trans }}
+{% endblock %}
+
+{% block form %}
+
+    {{ form_start(form, {'method': 'post', 'attr': {'class': 'form'} }) }}
+
+    <div class="form-group">
+        {{ form_widget(form.email) }}
+
+        <div class="text-danger">
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+
+    <button type="submit">
+        {{ 'table.product.save'|trans }}
+    </button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

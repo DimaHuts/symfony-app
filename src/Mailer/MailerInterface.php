@@ -8,11 +8,11 @@ interface MailerInterface
     /**
      * Send an email to a user to confirm the account creation.
      */
-    public function sendConfirmationEmailMessage(UserInterface $user);
+//    public function sendConfirmationEmailMessage(UserInterface $user);
     
     /**
      * Send an email to a user to confirm the password reset.
      */
-    public function sendResettingEmailMessage(UserInterface $user);
+//    public function sendResettingEmailMessage(UserInterface $user);
     
 }

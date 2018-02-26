@@ -243,6 +243,18 @@
                 <source>password.forgot</source>
                 <target>Забыли пароль?</target>
             </trans-unit>
+            <trans-unit id="password_change">
+                <source>password.change</source>
+                <target>Измените пароль</target>
+            </trans-unit>
+            <trans-unit id="confirmed">
+                <source>confirmed</source>
+                <target>Подтвердить</target>
+            </trans-unit>
+            <trans-unit id="password.change.success">
+                <source>password.change.success</source>
+                <target>Пароль был успешно изменен</target>
+            </trans-unit>
             <trans-unit id="account_need">
                 <source>account.need</source>
                 <target>Нужен аккаунт?</target>
@@ -259,7 +271,14 @@
                 <source>email.confirmed</source>
                 <target>Вы успешно подтвердили свой почтовый адрес. Сейчас вы можете войти на сайт</target>
             </trans-unit>
-            
+            <trans-unit id="password.forgot.request">
+                <source>password.forgot.request</source>
+                <target>Проверьте свою почту</target>
+            </trans-unit>
+             <trans-unit id="user.does.not.exist">
+                <source>user.does.not.exist</source>
+                <target>Пользователь не существует</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

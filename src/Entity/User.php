@@ -39,8 +39,8 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\NotBlank(groups={"ForgotPassword"})
+     * @Assert\Email(groups={"ForgotPassword"})
      */
     private $email;
 
@@ -52,7 +52,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $password;
 
     /**
-     * @CustomAssert\Password()
+     * @CustomAssert\Password(groups={"ChangePassword"})
      */
     private $plainPassword;
 

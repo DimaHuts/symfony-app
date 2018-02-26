@@ -4,7 +4,10 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Factory\Email\RegistrationTemplate;
 use App\Form\UserType;
+use App\Mailer\Mailer;
+use App\Validator\User\UserValidator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,22 +38,19 @@ class RegistrationController extends Controller
      * @Route("register", name="register")
      * @Method({"GET", "POST"})
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registration(Request $request, Mailer $mailer, RegistrationTemplate $registrationTemplate)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $this->eventDispatcher->dispatch(Events::PASSWORD_ENCODE, new UserEvent($user));
+            $this->eventDispatcher->dispatch(Events::SET_TOKEN, new UserEvent($user));
+            $mailer->sendEmailMessage($registrationTemplate->getRenderedTemplate($user->getToken()), (string)$user->getEmail());
             $this->eventDispatcher->dispatch(Events::USER_REGISTERED, new UserEvent($user));
-            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $this->dbService->saveData([$user]);
            
             return $this->redirectToRoute("security_login");
         }
@@ -64,11 +64,11 @@ class RegistrationController extends Controller
     /**
      * @Route("confirm/{token}", name="registration-confirm")
      */
-    public function registrationConfirm(Request $request)
+    public function registrationConfirm(Request $request, UserValidator $userValidator)
     {
         $user = $this->dbService->findOneByCriteria(User::class, ["token" => $request->get("token")]);
         
-        if ($user instanceof User)
+        if ($userValidator->isExistedUser($user))
         {
             $user->setIsActive(true);
             $user->setToken(null);

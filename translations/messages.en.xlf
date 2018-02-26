@@ -260,6 +260,18 @@
                 <source>password.forgot</source>
                 <target>Forgot password?</target>
             </trans-unit>
+            <trans-unit id="password_change">
+                <source>password.change</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="confirmed">
+                <source>confirmed</source>
+                <target>Confirm</target>
+            </trans-unit>
+            <trans-unit id="password.change.success">
+                <source>password.change.success</source>
+                <target>Password was changed successfully</target>
+            </trans-unit>
             <trans-unit id="account_need">
                 <source>account.need</source>
                 <target>Do you need account?</target>
@@ -275,6 +287,14 @@
             <trans-unit id="email.confirmed">
                 <source>email.confirmed</source>
                 <target>You confirmed your email successfully. Now you can eneter to the site</target>
+            </trans-unit>
+            <trans-unit id="password.forgot.request">
+                <source>password.forgot.request</source>
+                <target>Check your email</target>
+            </trans-unit>
+            <trans-unit id="user.does.not.exist">
+                <source>user.does.not.exist</source>
+                <target>User does not exist</target>
             </trans-unit>
             
         </body>

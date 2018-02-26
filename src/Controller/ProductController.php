@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\CSVFile;
-use App\Entity\Product;
 use App\Events;
 use App\Form\CSVFileType;
 use App\Form\ProductType;
@@ -21,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use App\Events\ProductEvent;
+use App\Entity\Product;
 
 /**
  * Class ProductController
