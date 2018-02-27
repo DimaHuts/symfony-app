@@ -67,8 +67,7 @@ class ForgotPassword extends AbstractController
         $existedUser = $this->dbService->findOneByCriteria(User::class, ['token' => $request->get("token")]);
         if ($this->userValidator->isExistedUser($existedUser))
         {
-            $user = new User();
-            $form = $this->createForm(ChangePasswordType::class, $user);
+            $form = $this->createForm(ChangePasswordType::class, new User());
             $form->handleRequest($request);
 
             if (!$form->isSubmitted() or !$form->isValid())
@@ -79,9 +78,9 @@ class ForgotPassword extends AbstractController
             }
 
             $this->eventDispatcher->dispatch(Events::PASSWORD_ENCODE, new UserEvent($existedUser));
-            $existedUser->setToken(null);
+            $this->eventDispatcher->dispatch(Events::PASSWORD_CHANGED_SUCCESS, new Event());
+
             $this->dbService->saveData([$existedUser]);
-            $this->eventDispatcher->dispatch(Events::PASSWORD_CHANGE_SUCCESS, new Event());
         }
 
         return $this->redirectToRoute('homepage');

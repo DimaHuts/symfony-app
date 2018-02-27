@@ -13,7 +13,7 @@ final class Events
     const USER_REGISTERED = 'user.registered';
     const EMAIL_CONFIRMED = 'email.confirmed';
     const PASSWORD_FORGOT_REQUEST = 'password.forgot.request';
-    const PASSWORD_CHANGE_SUCCESS = 'password.change.success';
+    const PASSWORD_CHANGED_SUCCESS = 'password.change.success';
     const PASSWORD_ENCODE = 'PASSWORD_ENCODE';
     const SET_TOKEN = 'SET_TOKEN';
     const USER_DOES_NOT_EXIST = 'user.does.not.exist';

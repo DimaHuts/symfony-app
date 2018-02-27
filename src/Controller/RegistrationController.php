@@ -48,7 +48,9 @@ class RegistrationController extends Controller
         {
             $this->eventDispatcher->dispatch(Events::PASSWORD_ENCODE, new UserEvent($user));
             $this->eventDispatcher->dispatch(Events::SET_TOKEN, new UserEvent($user));
+
             $mailer->sendEmailMessage($registrationTemplate->getRenderedTemplate($user->getToken()), (string)$user->getEmail());
+
             $this->eventDispatcher->dispatch(Events::USER_REGISTERED, new UserEvent($user));
             $this->dbService->saveData([$user]);
            
@@ -70,11 +72,9 @@ class RegistrationController extends Controller
         
         if ($userValidator->isExistedUser($user))
         {
-            $user->setIsActive(true);
-            $user->setToken(null);
-            $this->dbService->saveData([$user]);
-            
             $this->eventDispatcher->dispatch(Events::EMAIL_CONFIRMED);
+
+            $this->dbService->saveData([$user]);
             
             return $this->redirectToRoute("security_login");
         }
