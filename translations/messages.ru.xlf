@@ -69,6 +69,10 @@
                 <source>title.repeat_password</source>
                 <target>Повторить пароль</target>
             </trans-unit>
+            <trans-unit id="profile.user.edit">
+                <source>profile.user.edit</source>
+                <target>Редактировать</target>
+            </trans-unit>
 
 
             <trans-unit id="label.title">
@@ -190,6 +194,10 @@
                 <source>table.product.description</source>
                 <target>ОПИСАНИЕ</target>
             </trans-unit>
+            <trans-unit id="table_product_category">
+                <source>table.product.category</source>
+                <target>Категория</target>
+            </trans-unit>
             <trans-unit id="table_product_save">
                 <source>table.product.save</source>
                 <target>Сохранить</target>
@@ -262,6 +270,10 @@
             <trans-unit id="profile">
                 <source>profile</source>
                 <target>Профиль</target>
+            </trans-unit>
+            <trans-unit id="profile.update">
+                <source>profile.update</source>
+                <target>Профиль был изменен</target>
             </trans-unit>
             <trans-unit id="user.registered">
                 <source>user.registered</source>

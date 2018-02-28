@@ -16,5 +16,6 @@ final class Events
     const PASSWORD_CHANGED_SUCCESS = 'password.change.success';
     const PASSWORD_ENCODE = 'PASSWORD_ENCODE';
     const SET_TOKEN = 'SET_TOKEN';
+    const PROFILE_UPDATED = 'profile.update';
     const USER_DOES_NOT_EXIST = 'user.does.not.exist';
 }
