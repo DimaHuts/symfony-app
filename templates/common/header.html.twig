@@ -28,6 +28,14 @@
                         </li>
                     {% endif %}
 
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin') }}">
+                                {{ 'admin'|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+
                     {% if app.user %}
                         <li>
                             <a href="{{ path('user-profile') }}">
@@ -50,7 +58,6 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">
                             <span class="glyphicon glyphicon-globe"></span>
-                            <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
                         </a>
                         <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
                             {% for locale in locales() %}

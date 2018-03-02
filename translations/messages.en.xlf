@@ -74,6 +74,10 @@
                 <target>Edit user info</target>
             </trans-unit>
 
+             <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>Logout</target>
+            </trans-unit>
 
             <trans-unit id="label.title">
                 <source>label.title</source>
@@ -95,69 +99,10 @@
                 <source>label.password</source>
                 <target>Password</target>
             </trans-unit>
-            <trans-unit id="label.role">
-                <source>label.role</source>
-                <target>Role</target>
-            </trans-unit>
-            <trans-unit id="label.content">
-                <source>label.content</source>
-                <target>Content</target>
-            </trans-unit>
-            <trans-unit id="label.summary">
-                <source>label.summary</source>
-                <target>Summary</target>
-            </trans-unit>
-            <trans-unit id="label.published_at">
-                <source>label.published_at</source>
-                <target>Published at</target>
-            </trans-unit>
-            <trans-unit id="label.tags">
-                <source>label.tags</source>
-                <target>Tags</target>
-            </trans-unit>
             <trans-unit id="label.actions">
                 <source>label.actions</source>
                 <target>Actions</target>
             </trans-unit>
-            <trans-unit id="title.post_new">
-                <source>title.post_new</source>
-                <target>Post creation</target>
-            </trans-unit>
-            <trans-unit id="action.edit_contents">
-                <source>action.edit_contents</source>
-                <target>Edit contents</target>
-            </trans-unit>
-
-            <trans-unit id="menu.toggle_nav">
-                <source>menu.toggle_nav</source>
-                <target>Toggle navigation</target>
-            </trans-unit>
-            <trans-unit id="menu.choose_language">
-                <source>menu.choose_language</source>
-                <target>Choose language</target>
-            </trans-unit>
-            <trans-unit id="menu.post_list">
-                <source>menu.post_list</source>
-                <target>Post list</target>
-            </trans-unit>
-            <trans-unit id="menu.back_to_blog">
-                <source>menu.back_to_blog</source>
-                <target>Back to blog</target>
-            </trans-unit>
-            <trans-unit id="menu.homepage">
-                <source>menu.homepage</source>
-                <target>Homepage</target>
-            </trans-unit>
-            <trans-unit id="menu.admin">
-                <source>menu.admin</source>
-                <target>Backend</target>
-            </trans-unit>
-            <trans-unit id="menu.logout">
-                <source>menu.logout</source>
-                <target>Logout</target>
-            </trans-unit>
-
-
 
             <trans-unit id="product.import">
                 <source>product.import</source>
@@ -247,7 +192,7 @@
                 <source>my.products</source>
                 <target>My products</target>
             </trans-unit>
-            
+
             <trans-unit id="sign_up">
                 <source>sign.up</source>
                 <target>Sign Up</target>
@@ -292,6 +237,23 @@
                 <source>profile.update</source>
                 <target>Profile was updated</target>
             </trans-unit>
+            <trans-unit id="admin">
+                <source>admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="admin.category.name">
+                <source>admin.category.name</source>
+                <target>Category name</target>
+            </trans-unit>
+            <trans-unit id="admin.category.update">
+                <source>admin.category.update</source>
+                <target>Category was updated</target>
+            </trans-unit>
+            <trans-unit id="admin.category.delete">
+                <source>admin.category.delete</source>
+                <target>Category was deleted</target>
+            </trans-unit>
+
             <trans-unit id="user.registered">
                 <source>user.registered</source>
                 <target>User has been registered successfully. The confirmation was sent to your email</target>

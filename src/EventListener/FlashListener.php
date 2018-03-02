@@ -27,7 +27,9 @@ class FlashListener implements EventSubscriberInterface
         Events::PASSWORD_FORGOT_REQUEST => 'password.forgot.request',
         Events::PASSWORD_CHANGED_SUCCESS => 'password.change.success',
         Events::USER_DOES_NOT_EXIST => 'user.does.not.exist',
-        Events::PROFILE_UPDATED => 'profile.update'
+        Events::PROFILE_UPDATED => 'profile.update',
+        Events::CATEGORY_UPDATE => 'admin.category.update',
+        Events::CATEGORY_DELETE => 'admin.category.delete'
     ];
 
     /**
@@ -56,7 +58,9 @@ class FlashListener implements EventSubscriberInterface
             Events::PASSWORD_FORGOT_REQUEST => 'addSuccessMessage',
             Events::PASSWORD_CHANGED_SUCCESS => 'addSuccessMessage',
             Events::USER_DOES_NOT_EXIST => 'addDangerMessage',
-            Events::PROFILE_UPDATED => 'addSuccessMessage'
+            Events::PROFILE_UPDATED => 'addSuccessMessage',
+            Events::CATEGORY_UPDATE => 'addSuccessMessage',
+            Events::CATEGORY_DELETE => 'addSuccessMessage'
         ];
     }
 

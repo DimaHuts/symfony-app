@@ -33,22 +33,22 @@ class DbService implements DbServiceInterface
      * @see DbServiceInterface::saveData()
      * @inheritdoc
      */
-    function saveData($entities): void
+    function saveData($entities)
     {
         try
         {
-            for ($i = 0; $i < count($entities); $i++) {
-
-                $entity = $entities[$i];
-                
-                $this->em->persist($entity);
+            for ($i = 0; $i < count($entities); $i++)
+            {
+                $this->em->persist($entities[$i]);
                 $this->em->flush();
             }
-            
+
+            return true;
         }
         catch (Exception $exception)
         {
             $this->eventDispatcher->dispatch(Events::SAVE_DB_ERROR);
+            return false;
         }
     }
 
@@ -56,17 +56,19 @@ class DbService implements DbServiceInterface
      * @see DbServiceInterface::deleteData()
      * @inheritdoc
      */
-    function deleteData($entity, string $successEventName): void
+    function deleteData($entity)
     {
         try
         {
             $this->em->remove($entity);
             $this->em->flush();
-            $this->eventDispatcher->dispatch($successEventName);
+
+            return true;
         }
         catch (Exception $exception)
         {
             $this->eventDispatcher->dispatch(Events::SAVE_DB_ERROR);
+            return false;
         }
     }
 

@@ -20,4 +20,6 @@ final class Events
     const USER_DOES_NOT_EXIST = 'user.does.not.exist';
     const ADD_IMAGE = 'ADD_USER_IMAGE';
     const DELETE_IMAGE = 'DELETE_IMAGE';
+    const CATEGORY_UPDATE = 'admin.category.update';
+    const CATEGORY_DELETE = 'admin.category.delete';
 }

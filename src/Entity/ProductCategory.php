@@ -21,7 +21,7 @@ class ProductCategory
     private $id;
 
     /**
-     * @ORM\Column(name="category_name", type="string", length=40, nullable=false)
+     * @ORM\Column(name="category_name", type="string", length=40, nullable=false, unique=true)
      */
     private $categoryName;
 
@@ -44,7 +44,7 @@ class ProductCategory
     /**
      * @return string
      */
-    public function getCategoryName(): string
+    public function getCategoryName()
     {
         return $this->categoryName;
     }

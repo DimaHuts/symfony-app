@@ -14,16 +14,15 @@ interface DbServiceInterface {
     /**
      * This method saves data into database
      */
-    function saveData($entity): void;
+    function saveData($entity);
 
     /**
      * This method deletes data from database
      *
      * @param $entity
-     * @param string $successEventName
      * @return mixed
      */
-    function deleteData($entity, string $successEventName): void;
+    function deleteData($entity);
 
     /**
      * This method fetches $className type`s data from database using

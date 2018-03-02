@@ -159,7 +159,7 @@ class ProductController extends AbstractController
         $this->denyAccessUnlessGranted('edit', $product);
 
         $this->eventDispatcher->dispatch(Events::DELETE_IMAGE, new UploadImageEvent($product));
-        $this->dbService->deleteData($product, Events::PRODUCT_DELETED);
+        $this->dbService->deleteData($product);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }

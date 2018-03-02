@@ -1,0 +1,27 @@
+{% extends 'form.html.twig' %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block form_header_content %}
+    {{ 'table.product.category'|trans }}
+{% endblock %}
+
+{% block form %}
+    {{ form_start(form, {'attr': {'class': 'form'} }) }}
+
+    <div class="form-group">
+        {{ form_widget(form.categoryName, {'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <button type="submit">
+        {{ 'table.product.save'|trans|raw }}
+    </button>
+
+    {{ form_end(form) }}
+{% endblock %}
