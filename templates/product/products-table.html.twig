@@ -42,11 +42,11 @@
                 </td>
                 {#{% if filter %}#}
                     <td class="align-middle text-center">
-                        <a href="{{ path('edit-product', {'_locale': app.request.getLocale(), 'id': product.getId()}) }}">
+                        <a href="{{ path('edit-product', {'id': product.getId()}) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        {% include 'product/product-delete-form.html.twig' %}
-                        <a href="{{ path('add-product', {'_locale': app.request.getLocale()}) }}">
+                        {% include 'product/product-delete-form.html.twig' with {'path': path('delete-product', {'id': product.getId()})} %}
+                        <a href="{{ path('add-product') }}">
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </td>

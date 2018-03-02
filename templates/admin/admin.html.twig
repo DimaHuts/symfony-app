@@ -27,11 +27,7 @@
                     <a href="{{ path('category-add') }}">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
-                    <form class="table-products__delete-form" action="{{ path('category-delete', {'id': category.getId()}) }}" method="post">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-remove text-danger"></span>
-                        </button>
-                    </form>
+                    {% include 'product/product-delete-form.html.twig' with {'path': path('category-delete', {'id': category.getId()})} %}
                 </td>
             </tr>
         {% endfor %}
