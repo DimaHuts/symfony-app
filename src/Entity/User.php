@@ -204,7 +204,7 @@ class User extends UploadService implements AdvancedUserInterface, \Serializable
 
         // guarantees that a user always has at least one role for security
         if (empty($roles)) {
-            $roles[] = 'ROLE_ADMIN';
+            $roles[] = 'ROLE_USER';
         }
 
         return array_unique($roles);

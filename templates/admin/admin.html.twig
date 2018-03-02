@@ -10,6 +10,8 @@
 
 {% block body %}
 
+    {% include 'common/add-link.html.twig' with {'path': path('category-add')} %}
+
     <table class="table table-striped table-hover table-products">
 
         <thead>
