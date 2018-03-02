@@ -4,6 +4,10 @@
     Admin
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/admin.css') }}" />
+{% endblock %}
+
 {% block body %}
 
     <table class="table table-striped table-hover table-products">
@@ -21,13 +25,9 @@
                 <td class="align-middle text-center">{{ category.getCategoryName() }}</td>
 
                 <td class="align-middle text-center">
-                    <a href="{{ path('category-edit', {'id': category.getId()}) }}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <a href="{{ path('category-add') }}">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                    {% include 'product/product-delete-form.html.twig' with {'path': path('category-delete', {'id': category.getId()})} %}
+                    {% include 'common/edit-link.html.twig' with {'path': path('category-edit', {'id': category.getId()})} %}
+                    {% include 'common/delete-form.html.twig' with {'path': path('category-delete', {'id': category.getId()})} %}
+                    {% include 'common/add-link.html.twig' with {'path': path('category-add')} %}
                 </td>
             </tr>
         {% endfor %}

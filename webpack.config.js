@@ -24,6 +24,7 @@ Encore
     .addStyleEntry('css/footer', ['./assets/sass/common/footer.sass'])
     .addStyleEntry('css/forms', ['./assets/sass/forms.sass'])
     .addStyleEntry('css/profile', ['./assets/sass/profile.sass'])
+    .addStyleEntry('css/admin', ['./assets/sass/admin.sass'])
 
     // .addEntry('js/preview', './assets/js/preview.js')
     .addEntry('js/multi-preview', './assets/js/multi-preview.js')

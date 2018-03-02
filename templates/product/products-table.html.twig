@@ -40,17 +40,11 @@
                         {{ category.getCategoryName() }} <br />
                     {% endfor %}
                 </td>
-                {#{% if filter %}#}
-                    <td class="align-middle text-center">
-                        <a href="{{ path('edit-product', {'id': product.getId()}) }}">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
-                        {% include 'product/product-delete-form.html.twig' with {'path': path('delete-product', {'id': product.getId()})} %}
-                        <a href="{{ path('add-product') }}">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </td>
-                {#{% endif %}#}
+                <td class="align-middle text-center">
+                    {% include 'common/edit-link.html.twig' with {'path': path('edit-product', {'id': product.getId()})} %}
+                    {% include 'common/delete-form.html.twig' with {'path': path('delete-product', {'id': product.getId()})} %}
+                    {% include 'common/add-link.html.twig' with {'path': path('add-product')} %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
