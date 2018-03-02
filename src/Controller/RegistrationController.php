@@ -66,10 +66,8 @@ class RegistrationController extends Controller
     /**
      * @Route("confirm/{token}", name="registration-confirm")
      */
-    public function registrationConfirm(Request $request, UserValidator $userValidator)
+    public function registrationConfirm(Request $request, UserValidator $userValidator, User $user)
     {
-        $user = $this->dbService->findOneByCriteria(User::class, ["token" => $request->get("token")]);
-        
         if ($userValidator->isExistedUser($user))
         {
             $this->eventDispatcher->dispatch(Events::EMAIL_CONFIRMED, new UserEvent($user));

@@ -62,26 +62,22 @@ class ForgotPassword extends AbstractController
     /**
      * @Route("/change-password/{token}", name="forgot-password_change")
      */
-    public function changePassword(Request $request)
+    public function changePassword(Request $request, User $existedUser)
     {
-        $existedUser = $this->dbService->findOneByCriteria(User::class, ['token' => $request->get("token")]);
-        if ($this->userValidator->isExistedUser($existedUser))
+        $form = $this->createForm(ChangePasswordType::class, $existedUser);
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() or !$form->isValid())
         {
-            $form = $this->createForm(ChangePasswordType::class, new User());
-            $form->handleRequest($request);
-
-            if (!$form->isSubmitted() or !$form->isValid())
-            {
-                return $this->render('forgot-password/change-password.html.twig', [
-                    'form' => $form->createView()
-                ]);
-            }
-
-            $this->eventDispatcher->dispatch(Events::PASSWORD_ENCODE, new UserEvent($existedUser));
-            $this->eventDispatcher->dispatch(Events::PASSWORD_CHANGED_SUCCESS, new Event());
-
-            $this->dbService->saveData([$existedUser]);
+            return $this->render('forgot-password/change-password.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
+
+        $this->eventDispatcher->dispatch(Events::PASSWORD_ENCODE, new UserEvent($existedUser));
+        $this->eventDispatcher->dispatch(Events::PASSWORD_CHANGED_SUCCESS, new UserEvent($existedUser));
+
+        $this->dbService->saveData([$existedUser]);
 
         return $this->redirectToRoute('homepage');
     }

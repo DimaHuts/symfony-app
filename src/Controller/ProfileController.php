@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ProfileController
- * @Security("has_role('ROLE_USER')")
+ * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
  */
 class ProfileController extends Controller
 {

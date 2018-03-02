@@ -124,7 +124,6 @@ class ProductController extends AbstractController
         $this->denyAccessUnlessGranted('edit', $product);
 
         $form = $this->createForm(ProductType::class, $product);
-
         $form->handleRequest($request);
 
         if (!$form->isSubmitted() or !$form->isValid())
@@ -145,11 +144,8 @@ class ProductController extends AbstractController
      *
      * This method removes one product
      */
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request, Product $product)
     {
-        $id = (int)$request->get('id');
-        $product = $this->dbService->findOneByCriteria('App:Product', ['id' => $id]);
-
         if (is_null($product))
         {
             $this->eventDispatcher->dispatch(Events::ENTITY_DOES_NOT_EXIST);
