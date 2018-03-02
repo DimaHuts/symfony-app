@@ -131,7 +131,6 @@ class ProductController extends AbstractController
             return $this->render('product/add.html.twig', ['form' => $form->createView()]);
         }
 
-        $this->eventDispatcher->dispatch(Events::PRODUCT_MODIFIED, new ProductEvent($this->getUser(), $product));
         $this->eventDispatcher->dispatch(Events::ADD_IMAGE, new UploadImageEvent($product));
         $this->dbService->saveData([$product]);
 

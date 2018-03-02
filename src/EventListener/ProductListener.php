@@ -11,7 +11,6 @@ class ProductListener implements EventSubscriberInterface
     {
         return [
             Events::PRODUCT_ADD => "onProductAdd",
-            Events::PRODUCT_MODIFIED => "onProductAdd"
         ];
     }
     
