@@ -18,4 +18,6 @@ final class Events
     const SET_TOKEN = 'SET_TOKEN';
     const PROFILE_UPDATED = 'profile.update';
     const USER_DOES_NOT_EXIST = 'user.does.not.exist';
+    const ADD_IMAGE = 'ADD_USER_IMAGE';
+    const DELETE_IMAGE = 'DELETE_IMAGE';
 }

@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="product")
  */
-class Product
+class Product extends UploadService
 {
 
     /**
@@ -75,34 +75,6 @@ class Product
     public function setUploadedFiles($uploadedFiles)
     {
         $this->uploadedFiles = $uploadedFiles;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function prePersist()
-    {
-        if (!empty($this->getUploadedFiles()))
-        {
-            if (!empty($this->getFiles()))
-            {
-                UploadService::removeFiles($this->getFiles());
-            }
-
-            $this->setFiles(UploadService::transferFiles($this->getUploadedFiles()));
-        }
-    }
-
-    /**
-     * @ORM\PreRemove()
-     */
-    public function preDelete()
-    {
-        if (!empty($this->files))
-        {
-            UploadService::removeFiles($this->files);
-        }
     }
 
     /**

@@ -25,7 +25,6 @@ class UserListener implements EventSubscriberInterface
             Events::PASSWORD_ENCODE => 'onPasswordEncode',
             Events::SET_TOKEN => 'onSetToken',
             Events::EMAIL_CONFIRMED => 'onEmailConfirmed',
-            Events::PASSWORD_CHANGED_SUCCESS => ''
         ];
     }
 
@@ -52,10 +51,5 @@ class UserListener implements EventSubscriberInterface
 
         $user->setIsActive(true);
         $user->setToken(null);
-    }
-
-    public function onPasswordChanged(UserEvent $event, $eventName)
-    {
-        $event->getUser()->setToken(null);
     }
 }

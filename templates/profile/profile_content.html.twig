@@ -1,9 +1,11 @@
-<div class="">
-    {#{% if user.imageName is empty %}#}
-        {#<img src="{{ asset('img/undefined.jpg') }}" >#}
-    {#{% else %}#}
-        {#<img src="{{ asset('uploads/users-images/' ~ user.imageName) }}">#}
-    {#{% endif %}#}
+<div class="user-profile">
+    {% if user.files is empty %}
+        <img class="user-profile__logo" src="{{ asset('img/undefined.jpg') }}" >
+    {% else %}
+        {% for imgs in user.files %}
+            <img class="user-profile__logo" src="{{ asset(imgs) }}">
+        {% endfor %}
+    {% endif %}
     <p>
         <strong>{{ 'title.username'|trans }}:</strong>
         {{ user.username }}

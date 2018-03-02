@@ -72,7 +72,7 @@ class RegistrationController extends Controller
         
         if ($userValidator->isExistedUser($user))
         {
-            $this->eventDispatcher->dispatch(Events::EMAIL_CONFIRMED);
+            $this->eventDispatcher->dispatch(Events::EMAIL_CONFIRMED, new UserEvent($user));
 
             $this->dbService->saveData([$user]);
             

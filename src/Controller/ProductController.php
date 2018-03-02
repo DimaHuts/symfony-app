@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\CSVFile;
 use App\Events;
+use App\Events\UploadImageEvent;
 use App\Form\CSVFileType;
 use App\Form\ProductType;
 use App\Service\DbService;
@@ -13,11 +14,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use App\Events\ProductEvent;
 use App\Entity\Product;
@@ -31,7 +30,6 @@ class ProductController extends AbstractController
 {
 
     private $dbService;
-    private $translator;
     private $paginationService;
     private $serializer;
     private $eventDispatcher;
@@ -41,21 +39,18 @@ class ProductController extends AbstractController
      * ProductController constructor.
      *
      * @param DbService $dbService
-     * @param TranslatorInterface $translator
      * @param PaginatingService $paginationService
      * @param SerializerInterface $serializer
      * @param EventDispatcherInterface $eventDispatcher
      * @param ProductService $productService
      */
     public function __construct(DbService $dbService,
-                                TranslatorInterface $translator,
                                 PaginatingService $paginationService,
                                 SerializerInterface $serializer,
                                 EventDispatcherInterface $eventDispatcher,
                                 ProductService $productService)
     {
         $this->dbService = $dbService;
-        $this->translator = $translator;
         $this->paginationService = $paginationService;
         $this->serializer = $serializer;
         $this->eventDispatcher = $eventDispatcher;
@@ -106,6 +101,7 @@ class ProductController extends AbstractController
         }
 
         $this->eventDispatcher->dispatch(Events::PRODUCT_ADD, new ProductEvent($this->getUser(), $product));
+        $this->eventDispatcher->dispatch(Events::ADD_IMAGE, new UploadImageEvent($product));
         $this->dbService->saveData([$product]);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
@@ -117,18 +113,15 @@ class ProductController extends AbstractController
      *
      * This method modifies specific product and shows all products
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, Product $product)
     {
-        $id = $request->get('id');
-        $product = $this->dbService->findOneByCriteria('App:Product', ['id' => $id]);
-
         if (is_null($product))
         {
             $this->eventDispatcher->dispatch(Events::ENTITY_DOES_NOT_EXIST);
             return $this->redirectToRoute('homepage');
         }
 
-        $this->productService->isDenied($product->getUser(), $this->getUser());
+        $this->denyAccessUnlessGranted('edit', $product);
 
         $form = $this->createForm(ProductType::class, $product);
 
@@ -140,6 +133,7 @@ class ProductController extends AbstractController
         }
 
         $this->eventDispatcher->dispatch(Events::PRODUCT_MODIFIED, new ProductEvent($this->getUser(), $product));
+        $this->eventDispatcher->dispatch(Events::ADD_IMAGE, new UploadImageEvent($product));
         $this->dbService->saveData([$product]);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
@@ -162,8 +156,9 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        $this->productService->isDenied($product->getUser(), $this->getUser());
+        $this->denyAccessUnlessGranted('edit', $product);
 
+        $this->eventDispatcher->dispatch(Events::DELETE_IMAGE, new UploadImageEvent($product));
         $this->dbService->deleteData($product, Events::PRODUCT_DELETED);
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
@@ -179,8 +174,6 @@ class ProductController extends AbstractController
      */
     public function importFromCSVAction(Request $request)
     {
-//        $message = "";
-
         if ($request->isXmlHttpRequest())
         {
             $file = new CSVFile();
@@ -210,40 +203,12 @@ class ProductController extends AbstractController
                         fclose($handle);
 
                         $this->dbService->saveData($listProducts);
-//                        $message = $this->translator->trans('product.saved');
                     }
                 }
-//                else
-//                {
-//                    $message = $this->getFormErrors($form)["csvFile"][0];
-//                }
             }
         }
 
         return new Response($this->serializer->serialize('success','json'));
     }
-
-//    protected function getFormErrors(Form $form)
-//    {
-//        $errors = array();
-//
-//        // Global
-//        foreach ($form->getErrors() as $error) {
-//            $errors[$form->getName()][] = $error->getMessage();
-//        }
-//
-//        // Fields
-//        foreach ($form as $child) {
-//            if (!$child->isValid()) {
-//                foreach ($child->getErrors() as $error) {
-//                    $errors[$child->getName()][] = $error->getMessage();
-//                }
-//            }
-//        }
-//
-//        return $errors;
-//    }
-
-
 
 }

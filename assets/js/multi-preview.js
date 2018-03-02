@@ -2,7 +2,7 @@
 
     function previewImages() {
 
-        var $preview = $('#list').empty();
+        const $preview = $('#list').empty();
         if (this.files) $.each(this.files, readAndPreview);
 
         function readAndPreview(i, file) {
@@ -14,8 +14,7 @@
             var reader = new FileReader();
 
             $(reader).on("load", function() {
-                var imageContainer = $('<div class="list__image-container">');
-                imageContainer.append('<a class="list__image-container_delete-link img-circle"><span class="glyphicon glyphicon-remove text-danger"></span></a>');
+                const imageContainer = $('<div class="list__image-container">');
                 $preview.append(imageContainer.append($("<img/>", {src:this.result, class: 'product-image'})));
             });
 

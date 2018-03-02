@@ -7,7 +7,7 @@
   "build/css/import-csv.css": "/build/css/import-csv.css",
   "build/css/menu.css": "/build/css/menu.css",
   "build/css/product.css": "/build/css/product.css",
+  "build/css/profile.css": "/build/css/profile.css",
   "build/js/import.js": "/build/js/import.js",
-  "build/js/multi-preview.js": "/build/js/multi-preview.js",
-  "build/js/preview.js": "/build/js/preview.js"
+  "build/js/multi-preview.js": "/build/js/multi-preview.js"
 }

@@ -12,9 +12,13 @@ use Symfony\Component\Filesystem\Filesystem;
 class UploadService
 {
 
-    public static function removeFiles(array $removeFiles): void
+    public static function removeFiles($removeFiles): void
     {
         $files = [];
+        if (!is_array($removeFiles))
+        {
+            $removeFiles = [$removeFiles];
+        }
 
         foreach ($removeFiles as $image)
         {
@@ -24,10 +28,14 @@ class UploadService
         (new Filesystem())->remove($files);
     }
 
-    public static function transferFiles(array $transferFiles): array
+    public static function transferFiles($transferFiles): array
     {
         $fileNames = [];
         $path = 'uploads/products-images';
+        if (!is_array($transferFiles))
+        {
+            $transferFiles = [$transferFiles];
+        }
         foreach ($transferFiles as $file)
         {
             $fileName = $path . '/' . md5(uniqid()).'.'.$file->guessExtension();

@@ -23,8 +23,9 @@ Encore
     .addStyleEntry('css/menu', ['./assets/sass/menu.sass'])
     .addStyleEntry('css/footer', ['./assets/sass/common/footer.sass'])
     .addStyleEntry('css/forms', ['./assets/sass/forms.sass'])
+    .addStyleEntry('css/profile', ['./assets/sass/profile.sass'])
 
-    .addEntry('js/preview', './assets/js/preview.js')
+    // .addEntry('js/preview', './assets/js/preview.js')
     .addEntry('js/multi-preview', './assets/js/multi-preview.js')
     .addEntry('js/import', './assets/js/import.js')
     .addPlugin(new UglifyJsPlugin())

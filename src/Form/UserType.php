@@ -49,12 +49,18 @@ class UserType extends AbstractType
                         ],
                     ],
             ]);
+//            ->add('uploadedFiles', FileType::class, [
+//                'label' => 'product.image',
+//                'required' => false,
+//                'multiple' => false
+//            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'validation_groups' => ["Registration"]
         ]);
     }
 

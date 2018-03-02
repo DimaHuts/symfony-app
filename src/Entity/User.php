@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\UploadService;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,7 +13,7 @@ use App\Validator\Constraints as CustomAssert;
  *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User extends UploadService implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var int
@@ -27,11 +28,11 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", unique=true)
-     * @Assert\NotBlank(groups={"Profile"})
+     * @Assert\NotBlank(groups={"Profile", "Registration"})
      * @Assert\Length(
      *     min=3,
      *     max=50,
-     *     groups={"Profile"}
+     *     groups={"Profile", "Registration"}
      * )
      */
     private $username;
@@ -40,8 +41,8 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", unique=true)
-     * @Assert\NotBlank(groups={"ForgotPassword", "Profile"})
-     * @Assert\Email(groups={"ForgotPassword", "Profile"})
+     * @Assert\NotBlank(groups={"ForgotPassword", "Profile", "Registration"})
+     * @Assert\Email(groups={"ForgotPassword", "Profile", "Registration"})
      */
     private $email;
 
@@ -53,7 +54,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $password;
 
     /**
-     * @CustomAssert\Password(groups={"ChangePassword"})
+     * @CustomAssert\Password(groups={"ChangePassword", "Registration"})
      */
     private $plainPassword;
 
@@ -75,9 +76,62 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $token;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $files;
+
+    private $uploadedFiles;
+
     public function __construct()
     {
         $this->isActive = false;
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preDelete()
+    {
+        if (!empty($this->files))
+        {
+            UploadService::removeFiles($this->files);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadedFiles()
+    {
+        return $this->uploadedFiles;
+    }
+
+    /**
+     * @param mixed $uploadedFiles
+     */
+    public function setUploadedFiles($uploadedFiles)
+    {
+        $this->uploadedFiles = $uploadedFiles;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param mixed $files
+     * @return $this
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+
+        return $this;
     }
 
     public function getId(): int
@@ -150,7 +204,7 @@ class User implements AdvancedUserInterface, \Serializable
 
         // guarantees that a user always has at least one role for security
         if (empty($roles)) {
-            $roles[] = 'ROLE_USER';
+            $roles[] = 'ROLE_ADMIN';
         }
 
         return array_unique($roles);

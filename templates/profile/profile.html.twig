@@ -4,6 +4,10 @@
     Products
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/profile.css') }}" />
+{% endblock %}
+
 {% block body %}
     {% include 'profile/profile_content.html.twig' %}
 {% endblock %}

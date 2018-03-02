@@ -15,9 +15,9 @@
                 <th class="text-center">{{ 'table.product.price'|trans }}</th>
                 <th class="text-center">{{ 'table.product.description'|trans }}</th>
                 <th class="text-center">{{ 'table.product.category'|trans }}</th>
-                {% if filter %}
+                {#{% if filter %}#}
                     <th class="text-center">{{ 'table.product.actions'|trans }}</th>
-                {% endif %}
+                {#{% endif %}#}
             </tr>
         </thead>
 
@@ -40,7 +40,7 @@
                         {{ category.getCategoryName() }} <br />
                     {% endfor %}
                 </td>
-                {% if filter %}
+                {#{% if filter %}#}
                     <td class="align-middle text-center">
                         <a href="{{ path('edit-product', {'_locale': app.request.getLocale(), 'id': product.getId()}) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
@@ -50,7 +50,7 @@
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </td>
-                {% endif %}
+                {#{% endif %}#}
             </tr>
         {% endfor %}
         </tbody>

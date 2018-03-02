@@ -10,14 +10,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class SecurityController extends AbstractController
 {
-    
-    private $eventDispatcher;
-    
-    public function __construct(EventDispatcherInterface $eventDispatcher)
-    {
-        $this->eventDispatcher = $eventDispatcher;
-    }
-    
     /**
      * @Route("/login", name="security_login")
      */

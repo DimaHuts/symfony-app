@@ -5,15 +5,21 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Events;
+use App\Events\UploadImageEvent;
 use App\Form\ProfileType;
 use App\Service\DbService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class ProfileController
+ * @Security("has_role('ROLE_USER')")
+ */
 class ProfileController extends Controller
 {
 
@@ -56,8 +62,10 @@ class ProfileController extends Controller
             ]);
         }
 
-        $this->dbService->saveData([$user]);
+        $this->eventDispatcher->dispatch(Events::ADD_IMAGE, new UploadImageEvent($user));
         $this->eventDispatcher->dispatch(Events::PROFILE_UPDATED, new Event());
+
+        $this->dbService->saveData([$user]);
 
         return $this->redirectToRoute('user-profile');
     }
