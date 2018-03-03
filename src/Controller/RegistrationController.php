@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Factory\Email\RegistrationTemplate;
 use App\Form\UserType;
 use App\Mailer\Mailer;
+use App\Service\DbServiceInterface;
 use App\Validator\User\UserValidator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,7 +29,7 @@ class RegistrationController extends Controller
      * RegistrationController constructor.
      * @param $eventDispatcher
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, DbService $dbService)
+    public function __construct(EventDispatcherInterface $eventDispatcher, DbServiceInterface $dbService)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->dbService = $dbService;

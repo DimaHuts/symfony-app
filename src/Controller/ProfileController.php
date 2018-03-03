@@ -7,7 +7,7 @@ use App\Entity\User;
 use App\Events;
 use App\Events\UploadImageEvent;
 use App\Form\ProfileType;
-use App\Service\DbService;
+use App\Service\DbServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,7 +30,7 @@ class ProfileController extends Controller
      * ProfileController constructor.
      * @param $dbService
      */
-    public function __construct(DbService $dbService, EventDispatcherInterface $eventDispatcher)
+    public function __construct(DbServiceInterface $dbService, EventDispatcherInterface $eventDispatcher)
     {
         $this->dbService = $dbService;
         $this->eventDispatcher = $eventDispatcher;
