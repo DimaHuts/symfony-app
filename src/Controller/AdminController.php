@@ -7,6 +7,7 @@ use App\Entity\ProductCategory;
 use App\Events;
 use App\Form\AddCategoryType;
 use App\Service\DbService;
+use App\Service\DbServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,7 +29,7 @@ class AdminController extends Controller
      * AdminController constructor.
      * @param $dbService
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, DbService $dbService)
+    public function __construct(EventDispatcherInterface $eventDispatcher, DbServiceInterface $dbService)
     {
         $this->dbService = $dbService;
         $this->eventDispatcher = $eventDispatcher;

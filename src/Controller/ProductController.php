@@ -7,11 +7,8 @@ use App\Events;
 use App\Events\UploadImageEvent;
 use App\Form\CSVFileType;
 use App\Form\ProductType;
-use App\Service\DbService;
 use App\Service\DbServiceInterface;
-use App\Service\PaginatingService;
 use App\Service\PaginatingServiceInterface;
-use App\Service\ProductService;
 use App\Service\ProductServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -71,7 +68,8 @@ class ProductController extends AbstractController
 
         $csvForm = $this->createForm(CSVFileType::class, new CSVFile())->createView();
 
-        return $this->render('product/list.html.twig', compact('products', 'maxPages', 'thisPage', 'filter', 'csvForm'));
+        return $this->render('product/list.html.twig',
+            compact('products', 'maxPages', 'thisPage', 'filter', 'csvForm'));
     }
 
     /**
