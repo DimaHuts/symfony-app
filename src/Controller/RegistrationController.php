@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Factory\Email\RegistrationTemplate;
 use App\Form\UserType;
 use App\Mailer\Mailer;
+use App\Mailer\MailerInterface;
 use App\Service\DbServiceInterface;
 use App\Validator\User\UserValidator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -39,7 +40,7 @@ class RegistrationController extends Controller
      * @Route("register", name="register")
      * @Method({"GET", "POST"})
      */
-    public function registration(Request $request, Mailer $mailer, RegistrationTemplate $registrationTemplate)
+    public function registration(Request $request, MailerInterface $mailer, RegistrationTemplate $registrationTemplate)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);

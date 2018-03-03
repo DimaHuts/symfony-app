@@ -9,6 +9,7 @@ use App\Events;
 use App\Form\ForgotPassword\ChangePasswordType;
 use App\Form\ForgotPassword\RequestType;
 use App\Mailer\Mailer;
+use App\Mailer\MailerInterface;
 use App\Service\DbServiceInterface;
 use App\Events\UserEvent;
 use App\Validator\User\UserValidatorInterface;
@@ -37,7 +38,7 @@ class ForgotPassword extends AbstractController
     /**
      * @Route("/request", name="forgot-password_request")
      */
-    public function request(Request $request, Mailer $mailer, ForgotPasswordTemplate $forgotPasswordTemplate)
+    public function request(Request $request, MailerInterface $mailer, ForgotPasswordTemplate $forgotPasswordTemplate)
     {
         if ($request->isMethod('POST'))
         {
