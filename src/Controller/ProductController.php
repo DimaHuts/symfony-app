@@ -132,7 +132,10 @@ class ProductController extends AbstractController
         }
 
         $this->eventDispatcher->dispatch(Events::ADD_IMAGE, new UploadImageEvent($product));
-        $this->dbService->saveData([$product]);
+        if ($this->dbService->saveData([$product]))
+        {
+            $this->eventDispatcher->dispatch(Events::PRODUCT_MODIFIED);
+        }
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }
@@ -154,7 +157,10 @@ class ProductController extends AbstractController
         $this->denyAccessUnlessGranted('edit', $product);
 
         $this->eventDispatcher->dispatch(Events::DELETE_IMAGE, new UploadImageEvent($product));
-        $this->dbService->deleteData($product);
+        if ($this->dbService->deleteData($product))
+        {
+            $this->eventDispatcher->dispatch(Events::PRODUCT_DELETED);
+        }
 
         return $this->redirectToRoute('homepage', ['filter' => 'my']);
     }
