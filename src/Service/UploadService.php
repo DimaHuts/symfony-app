@@ -9,7 +9,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @author Dmitry Huts
  */
-class UploadService
+class UploadService implements UploadServiceInterface
 {
 
     public static function removeFiles($removeFiles): void

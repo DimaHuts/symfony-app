@@ -18,7 +18,7 @@ class PaginatingService implements PaginatingServiceInterface, PaginationValidat
     private $maxPages;
     private $validatedPageNumber;
 
-    public function __construct(DbService $dbService)
+    public function __construct(DbServiceInterface $dbService)
     {
         $this->dbService = $dbService;
     }
