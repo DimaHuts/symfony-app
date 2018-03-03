@@ -3,15 +3,13 @@
 namespace App\Service;
 
 use App\Entity\User;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class ProductService
  *
  * @author Dmitry Huts
  */
-class ProductService
+class ProductService implements ProductServiceInterface
 {
     private $dbService;
 
@@ -19,7 +17,7 @@ class ProductService
      * ProductService constructor.
      * @param $dbService
      */
-    public function __construct(DbService $dbService)
+    public function __construct(DbServiceInterface $dbService)
     {
         $this->dbService = $dbService;
     }
@@ -35,13 +33,4 @@ class ProductService
             return $this->dbService->queryFetchAll('App:Product', ['id' => 'DESC']);
         }
     }
-
-    public function isDenied(UserInterface $owner, \Symfony\Component\Security\Core\User\UserInterface $currentUser)
-    {
-        if ($owner !== $currentUser)
-        {
-            throw new AccessDeniedException();
-        }
-    }
-
 }

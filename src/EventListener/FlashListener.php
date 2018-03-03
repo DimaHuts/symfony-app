@@ -4,7 +4,6 @@ namespace App\EventListener;
 
 
 use App\Events;
-use App\Service\CommonMessagesService;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -32,13 +31,6 @@ class FlashListener implements EventSubscriberInterface
         Events::CATEGORY_DELETE => 'admin.category.delete'
     ];
 
-    /**
-     * FlashListener constructor.
-     *
-     * @param FlashBagInterface $flashBag
-     * @param TranslatorInterface $translator
-     * @param CommonMessagesService $commonMessagesService
-     */
     public function __construct(FlashBagInterface $flashBag, TranslatorInterface $translator)
     {
         $this->flashBag = $flashBag;

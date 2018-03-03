@@ -8,8 +8,11 @@ use App\Events\UploadImageEvent;
 use App\Form\CSVFileType;
 use App\Form\ProductType;
 use App\Service\DbService;
+use App\Service\DbServiceInterface;
 use App\Service\PaginatingService;
+use App\Service\PaginatingServiceInterface;
 use App\Service\ProductService;
+use App\Service\ProductServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,20 +38,11 @@ class ProductController extends AbstractController
     private $eventDispatcher;
     private $productService;
 
-    /**
-     * ProductController constructor.
-     *
-     * @param DbService $dbService
-     * @param PaginatingService $paginationService
-     * @param SerializerInterface $serializer
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param ProductService $productService
-     */
-    public function __construct(DbService $dbService,
-                                PaginatingService $paginationService,
+    public function __construct(DbServiceInterface $dbService,
+                                PaginatingServiceInterface $paginationService,
                                 SerializerInterface $serializer,
                                 EventDispatcherInterface $eventDispatcher,
-                                ProductService $productService)
+                                ProductServiceInterface $productService)
     {
         $this->dbService = $dbService;
         $this->paginationService = $paginationService;
