@@ -5,6 +5,7 @@ namespace App\EventListener;
 use App\Events;
 use App\Events\UserEvent;
 use App\Utils\TokenGenerator;
+use App\Utils\TokenGeneratorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -13,7 +14,7 @@ class UserListener implements EventSubscriberInterface
     private $passwordEncoder;
     private $tokenGenerator;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, TokenGenerator $tokenGenerator)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, TokenGeneratorInterface $tokenGenerator)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->tokenGenerator = $tokenGenerator;
