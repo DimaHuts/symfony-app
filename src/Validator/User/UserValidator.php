@@ -7,7 +7,7 @@ use App\Events;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class UserValidator
+class UserValidator implements UserValidatorInterface
 {
     private $eventDispatcher;
 
@@ -24,7 +24,7 @@ class UserValidator
     {
         if (!$user instanceof User)
         {
-            $this->eventDispatcher->dispatch(Events::USER_DOES_NOT_EXIST, new Event());
+            $this->eventDispatcher->dispatch(Events::USER_DOES_NOT_EXIST);
             return false;
         }
 

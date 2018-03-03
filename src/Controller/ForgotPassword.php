@@ -9,9 +9,9 @@ use App\Events;
 use App\Form\ForgotPassword\ChangePasswordType;
 use App\Form\ForgotPassword\RequestType;
 use App\Mailer\Mailer;
-use App\Service\DbService;
-use App\Validator\User\UserValidator;
+use App\Service\DbServiceInterface;
 use App\Events\UserEvent;
+use App\Validator\User\UserValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -26,8 +26,8 @@ class ForgotPassword extends AbstractController
     private $userValidator;
 
     public function __construct(EventDispatcherInterface $eventDispatcher,
-                                DbService $dbService,
-                                UserValidator $userValidator)
+                                DbServiceInterface $dbService,
+                                UserValidatorInterface $userValidator)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->dbService = $dbService;
